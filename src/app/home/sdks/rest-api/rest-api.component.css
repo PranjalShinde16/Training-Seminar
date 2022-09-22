@@ -1,0 +1,56 @@
+.text{
+    font-weight: 400;
+    line-height: 1.8;
+}
+pre{
+    padding-top: 0;
+    margin: 0;
+}
+.text1{
+    font-weight: 700;
+    padding-top: 1rem;
+    font-size: 20px;
+}
+.nav-item{
+    padding-bottom: 1rem;
+}
+.sec12{
+    margin-top: 3rem;
+}
+.code-class{
+    background-color: #2b303b;
+    padding: 15px 0;
+    margin: 2rem 0 1rem 0;
+    overflow: auto;
+}
+code{
+    color: #800;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+.code-block .code-block-body pre code{
+    height: auto;
+}
+.copytoclip{
+    position: relative;
+    left: 25rem;
+    top: 1rem;
+    cursor: pointer;
+}
+.plain1{
+    text-align: right;
+    padding: 0 0.5em 0 1em;
+    border-right: 3px solid #435a5f;
+    color: #757a84;
+}
+.plain{
+    padding-left: 1rem;
+}
+.note-head{
+    font-weight: 700;
+}
+.note{
+    background-color: #d8f6fa;
+    padding: 2rem 3rem 2rem 3rem;
+    margin-top: 2rem;
+}

@@ -1,0 +1,393 @@
+<article class="android-sdk container">
+    <section id="rest-api">
+        <h1 class="heading  head">Rest API</h1>
+    </section>
+    <section id="important-note">
+        <div class="alert dark note">
+            <h1 class="note-head">Important Note</h1>
+            <p>The End-user should never have access to the Client Id and Client Secret parameters.
+                Never hardcode this parameter into
+                the codebase of you iOS and Android app and do not share it with anyone.</p>
+        </div>
+    </section>
+    <section>
+        <h1 class="heading-alt sub-head">1. Add "Sign in with WhatsApp"</h1>
+        <p>Add "Sign in with WhatsApp" button in your project (web/iOS/android).</p>
+    </section>
+    <section id="get-signup-url">
+        <h1 class="heading-alt sub-head">2. Get SignUp URL</h1>
+        <div class="row">
+            <div class="col-md-6 text">
+                <p></p>
+                <div>When your users choose WhatsApp validation method from the screen you prepare,
+                    you can
+                    get signup url by using the request parameters stated below.</div>
+                <br>
+                <b>URL</b><br>
+                <code>https://api.otpless.com/api/v1/user/getSignupUrl</code>
+                <br><br>
+                <!-- <br> -->
+                <b>Request Headers</b>
+                <br><br>
+                <code class="code-block-inline">clientid</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The clientid field signifies your app's ID. You can find it in your <a
+                        href="https://dashboard.otpless.com/home/application" target="_blanl">app config</a> under
+                    <b>Application</b>.
+                </div>
+                <br>
+                <code class="code-block-inline">clientsecret</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The clientsecret field signifies your app's secret key. You can find it in your
+                    <a href="https://dashboard.otpless.com/home/application" target="_blanl">app config</a> under
+                    <b>Application</b>.
+                </div>
+                <br>
+                <code class="code-block-inline">state</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The state parameter should be used to avoid forgery attacks—pass in a value
+                    that's unique to the user you're
+                    authenticating and check it when you receive a temporary authorization code.</div>
+                <br>
+                <b>Response Parameters</b>
+                <br><br>
+
+                <code class="code-block-inline">url</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>This parameter is used to open WhatsApp.</div>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">Get URL</h1>
+                    <div data-v-f97a4574="" class="code-block-tabs">
+                        <ul data-v-f97a4574="">
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('request')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'request' ? 'is-active' : ''">
+                                    Curl Request
+                                </div>
+                            </li>
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('response')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'response' ? 'is-active' : ''">
+                                    Curl Response
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'response' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info1}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">              <code  class="curl hljs dsconfig"><span class="hljs-string">curl</span>  <span class="hljs-built_in">--request</span> <span class="hljs-string">GET</span> <span class="hljs-string">'https://api.otpless.com/api/v1/user/getSignupUrl'</span> <span class="hljs-built_in">--header</span> <span class="hljs-string">'clientid: YOUR-CLIENT-ID'</span> <span class="hljs-built_in">--header</span> <span class="hljs-string">'clientsecret: YOUR-CLIENT-SECRET'</span> <span class="hljs-built_in">--header</span> <span class="hljs-string">'state: STATE'</span></code>
+              <input  type="text">
+            </pre>
+                        </div>
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'request' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info2}}">content_copy</mat-icon>
+                            <pre>              <code  class="php hljs">{{'{'}}
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"url"</span>: <span class="hljs-string">"whatsapp://send?phone=12199999764&text=A......"</span>
+{{'}'}}</code>
+              <input  type="text">
+            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h1 class="heading-alt sub-head">3. Redirect User to WhatsApp</h1>
+        <p>Redirect user to the url received in the above api response.</p>
+        Examples:<br><br>
+        whatsapp://send?phone=12199999764&text=​​Hi%20WhatsApp!%0APlease%20verify%20my%20number%20with%20OTPless.
+    </section>
+    <section>
+        <h1 class="heading-alt sub-head">4. Redirect Back to App</h1>
+        User authenticates in WhatsApp by sending a pre-populated message. Once authenticated, the user gets
+        redirected back
+        to your <a href="/using-panel/how-do-i-connect-an-app#need-to-know" target="_blank">Callback URI</a>.<br><br>
+        Examples:<br><br>
+        https://xyz.com/otpless/callback<br>
+        xyz://otpless
+    </section>
+    <section>
+        <h1 class="heading-alt sub-head">5. Extract Token</h1>
+        <p>OTPless will append a "token" when redirecting users back to your callback URI. Extract that token from url
+            and pass to OTPless api to get user details.</p>
+        Examples:<br><br>
+        https://xyz.com/otpless/callback?token=1234567890<br>
+        xyz://otpless?token=1234567890
+    </section>
+    <section class="secondsection" id="get-user-details">
+        <h1 class="heading-alt sub-head">6. Call GetUser API</h1>
+        <div class="row">
+            <div class="col-md-6 text">
+
+                <div>Use this token to call getUser API and retrieve user details (WhatsApp number,
+                    name)</div><br>
+                <b>URL</b><br>
+                <code>https://api.otpless.com/api/v1/user/getUserDetails</code>
+                <br><br>
+                <b>Request Headers</b>
+                <br><br>
+                <code class="code-block-inline">clientid</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The clientid field signifies your app's ID. You can find it in your <a
+                        href="https://dashboard.otpless.com/home/application" target="_blanl">app config</a> under
+                    <b>Application</b>.
+                </div>
+                <br>
+                <code class="code-block-inline">clientsecret</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The clientsecret field signifies your app's secret key. You can find it in your
+                    <a href="https://dashboard.otpless.com/home/application" target="_blanl">app config</a> under
+                    <b>Application</b>.
+                </div>
+                <br>
+                <code class="code-block-inline">state</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>The state parameter should be used to avoid forgery attacks—pass in a value
+                    that's unique to the user you're
+                    authenticating and check it when you receive a temporary authorization code.</div>
+                <br>
+                <b>Response Parameters</b>
+                <br><br>
+
+                <code class="code-block-inline">name</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>This is the parameter user has input as his/her name.</div>
+                <br>
+                <code class="code-block-inline">mobile</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>This parameter denotes user's mobile number.</div>
+                <br>
+                <code class="code-block-inline">state</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <br>
+                <div>The state parameter should be used to avoid forgery attacks—pass in a value
+                    that's unique to the user you're
+                    authenticating.</div>
+                <br>
+                <code class="code-block-inline">stateMatched</code>
+                <span title="Copy to clipboard" class="copy-to-clipboard"></span>
+                <div>This is the parameter tells whether user's state is matched or not.</div>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">Call GetUser API</h1>
+                    <div data-v-f97a4574="" class="code-block-tabs">
+                        <ul data-v-f97a4574="">
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('request')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'request' ? 'is-active' : ''">
+                                    Example Request
+                                </div>
+                            </li>
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('response')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'response' ? 'is-active' : ''">
+                                    Example Response
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'response' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info3}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">              <code  class="curl hljs dsconfig"><span class="hljs-string">curl</span>  <span class="hljs-built_in">--location</span> <span class="hljs-built_in">--request</span><span class="hljs-string"> POST</span> <span class="hljs-string">'https://api.otpless.com/api/v1/user/getUserDetails' \</span>
+<span class="hljs-built_in">--header</span> <span class="hljs-string">'clientid: client_id' \</span>
+<span class="hljs-built_in">--header</span> <span class="hljs-string">'clientsecret: client_secret' \</span> 
+<span class="hljs-built_in">--header</span> <span class="hljs-string">'state: device_id' \</span>
+<span class="hljs-built_in">--data-raw</span> 
+<span class="hljs-string">'{{'{'}}
+    "token": "cf15eff6-3dc8-487a-98a7-9927ecc23b85" 
+{{'}'}}'</span>
+                            </code>
+              <input  type="text">
+            </pre>
+                        </div>
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'request' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info4}}">content_copy</mat-icon>
+                            <pre>              <code  class="php hljs">{{'{'}}
+    <span class="hljs-string">"status"</span>: <span class="hljs-string">"SUCCESS"</span>,
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">"Joe"</span>,
+    <span class="hljs-string">"mobile"</span>: <span class="hljs-string">"910123456789"</span>,
+    <span class="hljs-string">"state"</span>: <span class="hljs-string">"asasas-82dc-2des-232d-asasasasasasasasas"</span>
+    <span class="hljs-string">"stateMatched"</span>: <span class="hljs-string">true</span>
+{{'}'}}</code>
+              <input  type="text">
+            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Added -->
+    <section id="node-js">
+        <h1 class="heading-alt sub-head">Node.js</h1>
+        <p>Import depandancy of XMLHttpRequest module.</p>
+        <code>var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;</code><br><br>
+        <div class="row sub-section">
+            <div class="col-md-6">
+                <b>Get SignUp URL</b><br><br>
+                <div>Sample code of http request to get signup url from OTPless. </div>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">Get SignUp URL</h1>
+                    <div data-v-f97a4574="" class="code-block-tabs">
+                        <ul data-v-f97a4574="">
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('request')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'request' ? 'is-active' : ''">
+                                    Example Request
+                                </div>
+                            </li>
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('response')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'response' ? 'is-active' : ''">
+                                    Example Http Call
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'response' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info5}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">
+                    <code  class="curl hljs dsconfig color">let clientid = 'clientid',
+client_secret = 'client_secret',
+signupUrl = 'https://api.otpless.com/api/v1/user/getSignupUrl',
+state = 'state',
+
+this.getUrl(clientid, client_secret, signupUrl, state).then((result) => {{'{'}}
+console.log('Result :', result.responseText);
+{{'}'}}).catch(err => {{'{'}}
+console.error('Error :', err);
+{{'}'}});
+                    </code>
+      <input  type="text">
+    </pre>
+                        </div>
+                    </div>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'request' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info6}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">
+                                            <code  class="curl hljs dsconfig color">
+getUrl(clientid, client_secret, url, state) {{ '{' }}
+    let promise = new Promise((resolve, reject) => {{ '{' }}
+        try {{ '{' }}
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.setRequestHeader("clientid", clientid);
+            xhr.setRequestHeader("clientsecret", client_secret);
+            xhr.setRequestHeader("state", state);
+                                        
+            xhr.onreadystatechange = async function () {{ '{' }}
+                if (xhr.readyState === 4) {{ '{' }}
+                    resolve(xhr)
+                {{ '}' }}
+            {{ '}' }}
+            xhr.send();
+        {{ '}' }} 
+        catch (error) {{ '{' }}
+            reject(error)
+        {{ '}' }}
+    {{ '}' }})
+    return promise
+{{ '}' }}
+                                            </code>
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row sub-section">
+            <div class="col-md-6">
+                <b>Get User Details</b><br><br>
+                <div>Sample code of http request to get user details from OTPless. </div>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">Get User Details</h1>
+                    <div data-v-f97a4574="" class="code-block-tabs">
+                        <ul data-v-f97a4574="">
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('request')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'request' ? 'is-active' : ''">
+                                    Example Request
+                                </div>
+                            </li>
+                            <li data-v-f97a4574="" (click)="setActiveNavTab('response')">
+                                <div data-v-f97a4574="" class="nav-item"
+                                    [ngClass]="activeTab === 'response' ? 'is-active' : ''">
+                                    Example Http Call
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'response' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info7}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">
+                <code  class="curl hljs dsconfig color">
+let clientid = 'clientid',
+client_secret = 'client_secret',
+state = 'state',
+userDetailsUrl = 'https://api.otpless.com/api/v1/user/getUserDetails',
+token = '270828b3434344-953a-466e-95e7-c59cd58cc65d'
+        
+this.getUserDetails(clientid, client_secret, userDetailsUrl, token, state).then((result) => {{ '{' }}
+    console.log('Result :', result.responseText);
+    {{ '}' }}).catch(err => {{ '{' }}
+        console.error('Error :', err);
+{{ '}' }});
+                </code>
+</pre>
+                        </div>
+                    </div>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <div data-v-f97a4574="" [ngStyle]="activeTab === 'request' ? {'display':'none'} : {}">
+                            <mat-icon class="copytoclip" cdkCopyToClipboard="{{info8}}">content_copy</mat-icon>
+                            <pre id="copytoclipboard">
+                    <code  class="curl hljs dsconfig color">
+getUserDetails(clientid, client_secret, url, token, state) {{ '{' }}
+    let promise = new Promise((resolve, reject) => {{ '{' }}
+        try {{ '{' }}
+            var xhr = new XMLHttpRequest();
+            let data = {{ '{' }}
+                token
+            {{ '}' }}
+            xhr.open('POST', url);
+            xhr.setRequestHeader("clientid", clientid);
+            xhr.setRequestHeader("clientsecret", client_secret);
+            xhr.setRequestHeader("state", state);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                    
+            xhr.onreadystatechange = async function () {{ '{' }}
+                if (xhr.readyState === 4) {{ '{' }}
+                    resolve(xhr)
+                {{ '}' }}
+            {{ '}' }}
+            xhr.send(JSON.stringify(data));
+        {{ '}' }} catch (error) {{ '{' }}
+            reject(error)
+        {{ '}' }}
+    {{ '}' }})
+    return promise
+{{ '}' }}
+                    </code>
+                        </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

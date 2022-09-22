@@ -1,0 +1,389 @@
+<header class="header">
+  <nav class="navbar1">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" class="menu-toggler"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <a [routerLink]="'/gettingStarted'" class="navbar-brand nuxt-link-exact-active nuxt-link-active"
+      aria-current="page"><img class="login-logo-img" src="../../assets/img/logo.png" alt="OTPLess Logo" />
+    </a>
+    <div class="nav">
+      <a [routerLink]="'/gettingStarted'" class="nav-link home nuxt-link-exact-active nuxt-link-active clearance1"
+        aria-current="page">Home</a>
+      <a target="_blank" href="https://dashboard.otpless.com/login" class="nav-link login">Login</a>
+      <a target="_blank" href="https://otpless.com/signup" class="nav-link register inverted ">Try Now</a>
+    </div>
+  </nav>
+</header>
+<mat-sidenav-container autosize="true" class="sidenav-container ">
+  <mat-sidenav #drawer class="sidenav sidebar" [fixedInViewport]="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <mat-nav-list id="sidebar-with-scrollbar">
+      <div class="sidebar-buttons" *ngIf="isHandset$ | async">
+        <a target=" _blank" href="https://dashboard.otpless.com/login" class="sidebar-button">Login</a>
+        <a target="_blank" href="https://otpless.com/signup" class="sidebar-button inverted">Use for Free</a>
+      </div>
+      <div class="pages-tree">
+        <ul class="vk-menu">
+          <li class="item">
+            <a [routerLink]="'/gettingStarted'" (click)="setAlActiveTab('Get Started')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Get Started'}">Get Started</a>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/about-us'" (click)="setAlActiveTab('About OTPless')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'About OTPless'}">About OTPless</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item last-sub-item" (click)="setAlActiveTab('About OTPless', 'FAQ')">
+                <a [routerLink]="'/about-us/faq'" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'FAQ'}">FAQ</a>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/using-panel'" (click)="setAlActiveTab('Using Panel')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Using Panel'}">Using Panel</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/how-do-i-connect-an-app'"
+                  (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'How Do I Set up an App?'}">How
+                  Do I Set up an
+                  App?</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'How Do I Set up an App?'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?', 'How Do I Set up an App?')">
+                    <a href="/using-panel/how-do-i-connect-an-app#connect-an-app" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'How Do I Set up an App?'}">How
+                      Do
+                      I Set up an App?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?', 'Need to Know')">
+                    <a href="/using-panel/how-do-i-connect-an-app#need-to-know" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Need to Know'}">Need
+                      to Know</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/topping-up-account'"
+                  (click)="setAlActiveTab('Using Panel', 'Topping up the Account')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Topping up the Account'}">Topping
+                  up the
+                  Account</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Topping up the Account'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'My Account?')">
+                    <a href="/using-panel/topping-up-account#how-do-i-add-funds-to-my-account" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'My Account?'}">How
+                      Do I Add Funds
+                      to My Account?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'Running Low?')">
+                    <a href="/using-panel/topping-up-account#how-do-i-know-when-my-balance-is-running-low" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Running Low?'}">How
+                      Do I
+                      Know When My Balance Is Running Low?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'Runs Out?')">
+                    <a href="/using-panel/topping-up-account#what-happens-if-my-balance-runs-out" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Runs Out?'}">What
+                      Happens if My
+                      Balance Runs Out?</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/account-management'"
+                  (click)="setAlActiveTab('Using Panel', 'Account Management')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Account Management'}">Account
+                  Management</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Account Management'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Account Management', 'Billing Information')">
+                    <a href="/using-panel/account-management#billing-information" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Billing Information'}">Billing
+                      Information</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Account Management', 'Changing Your Password')">
+                    <a href="/using-panel/account-management#changing-your-password" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Changing Your Password'}">Changing
+                      Your Password</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/start-to-verify/ios-sdk'" (click)="setAlActiveTab('Start to Verify')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Start to Verify'}">Start to
+              Verify</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/ios-sdk'" (click)="setAlActiveTab('Start to Verify', 'iOS SDK')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'iOS SDK'}">iOS SDK</a>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/android-sdk'"
+                  (click)="setAlActiveTab('Start to Verify', 'Android SDK')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Android SDK'}">Android
+                  SDK</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Android SDK'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'How It Works?')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#how-it-works'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'How It Works?'}">How
+                      It Works?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'Installation')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#installation'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Installation'}">Installation</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'Usage')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#usage'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Usage'}">Usage</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/web-sdk'" (click)="setAlActiveTab('Start to Verify', 'Web SDK')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Web SDK'}">Web SDK</a>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/rest-api'" (click)="setAlActiveTab('Start to Verify', 'Rest API')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Rest API'}">Rest API</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Rest API'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'IMPORTANT NOTE')">
+                    <a href="/start-to-verify/rest-api#important-note" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'IMPORTANT NOTE'}">IMPORTANT
+                      NOTE</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Get SignUp URL')">
+                    <a href="/start-to-verify/rest-api#get-signup-url" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Get SignUp URL'}">Get
+                      SignUp
+                      URL</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Get User Detals')">
+                    <a href="/start-to-verify/rest-api#get-user-details" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Get User Detals'}">
+                      Get User Detals</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Node.js')">
+                    <a href="/start-to-verify/rest-api#node-js" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Node.js'}">Node.js</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div id="content" class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <div>
+  <header class="header">
+    <nav class="navbar1">
+      <button class="menu-toggler" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="menuToggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a [routerLink]="'/gettingStarted'" class="navbar-brand nuxt-link-exact-active nuxt-link-active"
+        aria-current="page"><img class="login-logo-img" src="../../assets/img/logo.png" alt="OTPLess Logo" />
+      </a>
+      <div class="nav">
+        <a [routerLink]="'/gettingStarted'" class="nav-link home nuxt-link-exact-active nuxt-link-active clearance1"
+          aria-current="page">Home</a>
+        <a target="_blank" href="https://dashboard.otpless.com/login" class="nav-link login">Login</a>
+        <a target="_blank" href="https://otpless.com/signup" class="nav-link register inverted ">Try Now</a>
+      </div>
+    </nav>
+  </header>
+  <div class="sidebar" [ngClass]="isMenuOpen === true ? 'open' : ''">
+    <div class="sidebar-with-scrollbar" id="sidebar-with-scrollbar">
+      <div class="sidebar-header">
+        <div class="sidebar-close">
+          <mat-icon (click)="menuToggle()">keyboard_backspace</mat-icon>
+        </div>
+      </div>
+      <div class="sidebar-buttons">
+        <a target="_blank" href="https://dashboard.otpless.com/login" class="sidebar-button">Login</a>
+        <a target="_blank" href="https://otpless.com/signup" class="sidebar-button inverted">Use for Free</a>
+      </div>
+      <div class="pages-tree">
+        <ul class="vk-menu">
+          <li class="item">
+            <a [routerLink]="'/gettingStarted'" (click)="setAlActiveTab('Get Started')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Get Started'}">Get Started</a>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/about-us'" (click)="setAlActiveTab('About OTPless')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'About OTPless'}">About OTPless</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item last-sub-item" (click)="setAlActiveTab('About OTPless', 'FAQ')">
+                <a [routerLink]="'/about-us/faq'" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'FAQ'}">FAQ</a>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/using-panel'" (click)="setAlActiveTab('Using Panel')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Using Panel'}">Using Panel</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/how-do-i-connect-an-app'"
+                  (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'How Do I Set up an App?'}">How Do I Set up an
+                  App?</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'How Do I Set up an App?'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?', 'How Do I Set up an App?')">
+                    <a href="/using-panel/how-do-i-connect-an-app#connect-an-app" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'How Do I Set up an App?'}">How Do
+                      I Set up an App?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'How Do I Set up an App?', 'Need to Know')">
+                    <a href="/using-panel/how-do-i-connect-an-app#need-to-know" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Need to Know'}">Need to Know</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/topping-up-account'"
+                  (click)="setAlActiveTab('Using Panel', 'Topping up the Account')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Topping up the Account'}">Topping up the
+                  Account</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Topping up the Account'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'My Account?')">
+                    <a href="/using-panel/topping-up-account#how-do-i-add-funds-to-my-account" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'My Account?'}">How Do I Add Funds
+                      to My Account?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'Running Low?')">
+                    <a href="/using-panel/topping-up-account#how-do-i-know-when-my-balance-is-running-low" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Running Low?'}">How Do I
+                      Know When My Balance Is Running Low?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Topping up the Account', 'Runs Out?')">
+                    <a href="/using-panel/topping-up-account#what-happens-if-my-balance-runs-out" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Runs Out?'}">What Happens if My
+                      Balance Runs Out?</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/using-panel/account-management'"
+                  (click)="setAlActiveTab('Using Panel', 'Account Management')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Account Management'}">Account Management</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Account Management'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Account Management', 'Billing Information')">
+                    <a href="/using-panel/account-management#billing-information" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Billing Information'}">Billing
+                      Information</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Using Panel', 'Account Management', 'Changing Your Password')">
+                    <a href="/using-panel/account-management#changing-your-password" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Changing Your Password'}">Changing
+                      Your Password</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="item">
+            <a [routerLink]="'/start-to-verify/ios-sdk'" (click)="setAlActiveTab('Start to Verify')" class=""
+              [ngClass]="{'active-nav-tab': activeNavTab === 'Start to Verify'}">Start to Verify</a>
+            <ul class="vk-sub-menu">
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/ios-sdk'" (click)="setAlActiveTab('Start to Verify', 'iOS SDK')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'iOS SDK'}">iOS SDK</a>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/android-sdk'"
+                  (click)="setAlActiveTab('Start to Verify', 'Android SDK')" class=""
+                  [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Android SDK'}">Android SDK</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Android SDK'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'How It Works?')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#how-it-works'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'How It Works?'}">How It Works?</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'Installation')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#installation'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Installation'}">Installation</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Android SDK', 'Usage')">
+                    <a [routerLink]="'/start-to-verify/android-sdk#usage'" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Usage'}">Usage</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/web-sdk'" (click)="setAlActiveTab('Start to Verify', 'Web SDK')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Web SDK'}">Web SDK</a>
+              </li>
+              <li class="item sub-item">
+                <a [routerLink]="'/start-to-verify/rest-api'" (click)="setAlActiveTab('Start to Verify', 'Rest API')"
+                  class="" [ngClass]="{'active-nav-sub-tab': activeNavSubTab === 'Rest API'}">Rest API</a>
+                <ul class="vk-sub-menu" *ngIf="activeNavSubTab === 'Rest API'">
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'IMPORTANT NOTE')">
+                    <a href="/start-to-verify/rest-api#important-note" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'IMPORTANT NOTE'}">IMPORTANT
+                      NOTE</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Get SignUp URL')">
+                    <a href="/start-to-verify/rest-api#get-signup-url" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Get SignUp URL'}">Get
+                      SignUp
+                      URL</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Get User Detals')">
+                    <a href="/start-to-verify/rest-api#get-user-details" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Get User Detals'}">
+                      Get User Detals</a>
+                  </li>
+                  <li class="item sub-item last-sub-item"
+                    (click)="setAlActiveTab('Start to Verify', 'Rest API', 'Node.js')">
+                    <a href="/start-to-verify/rest-api#node-js" class=""
+                      [ngClass]="{'active-nav-sub-tab': activeNavSubTabChildItem === 'Node.js'}">Node.js</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="content" class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->

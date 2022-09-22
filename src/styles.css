@@ -1,0 +1,599 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+a:link {
+    color: #3f51b5;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.content {
+    float: none;
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.content section {
+    padding-top: 30px;
+}
+
+.content:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.content .container {
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 120px;
+}
+
+.content .heading,
+.content .heading-alt,
+.content .heading-sub {
+    color: #071449;
+    font-size: 38px;
+    line-height: 1.13;
+}
+
+.content .heading-alt {
+    background: #f3f6f9;
+    border-left: 6px solid #3f51b5;
+    border-radius: 4px;
+    padding: 20px;
+    font-size: 26px;
+    line-height: 1.65;
+}
+
+.content .heading-sub {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.95;
+}
+
+.content p {
+    color: #071449;
+    font-size: 15px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    padding-bottom: 10px;
+}
+
+.content p a {
+    color: #071449;
+    text-decoration: underline;
+}
+
+.content p a:hover {
+    text-decoration: none;
+}
+
+.content ol li,
+.content ul li {
+    color: #071449;
+    font-size: 15px;
+    padding: 7px 0;
+}
+
+.content::-webkit-scrollbar {
+    width: 0.35em;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.content::-webkit-scrollbar-track {
+    box-shadow: none;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: rgba(7, 20, 73, 0.5);
+    outline: 0;
+}
+
+.content .zoom {
+    position: relative;
+    cursor: pointer;
+}
+
+.content .zoom-child {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 22;
+    transform: translateZ(0);
+}
+
+.content .zoom-child img {
+    background: #fff;
+    max-height: 100vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card-group {
+    margin: 0 0;
+}
+
+
+.card1 {
+    font-weight: 400;
+    border: 1px solid #edeff3;
+    border-top: 6px solid #3f51b5;
+    border-radius: 4px;
+    width: 18rem;
+    padding: 1rem 0 0 0;
+    margin: 2rem 1rem 0 0;
+    padding-top: 0;
+}
+
+.card-title {
+    color: #071449;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding-bottom: 1.5rem;
+    line-height: 1.8rem;
+}
+
+.card1 ul {
+    list-style: none;
+}
+
+.card1 ul,
+.card1 ul li {
+    padding: 0 0 0.6rem 0;
+}
+
+.card1 ul li a {
+    color: #071449;
+    display: block;
+    font-size: 16px;
+    padding: 7px 0;
+}
+
+.card1 ul li a:active,
+.card1 ul li a:hover {
+    color: #3f51b5;
+}
+
+.card1 ul.inline-list li {
+    display: inline-block;
+    margin-right: 0.16em;
+}
+
+.card1 ul.inline-list li:last-child {
+    margin-right: 0;
+}
+
+.card1 ul.inline-list li a {
+    background-color: #fff;
+    color: #183eda;
+    display: block;
+    border-radius: 5px;
+    border: 2px solid #edeff3;
+    height: 30px;
+    width: 53px;
+    position: relative;
+    text-align: center;
+}
+
+.card1 ul.inline-list li a img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.button {
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px 42px;
+}
+
+.button.success {
+    background: #3f51b5;
+}
+
+
+.code-block {
+    background: #f5f6fa;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.code-block .code-block-title {
+    background: #e6e8ed;
+    border-radius: 4px;
+    padding: 4px 28px;
+    color: #333;
+    font-size: 20px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.15;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.code-block .code-block-body,
+.code-block .code-block-tabs {
+    padding: 0 28px
+}
+
+
+.code-block .code-block-body {
+    padding-top: 0
+}
+
+.code-block .code-block-body pre {
+    margin: 0;
+    overflow: hidden;
+    position: relative
+}
+
+.code-block .code-block-body pre .copied {
+    position: absolute;
+    top: 12px;
+    right: 30px
+}
+
+.code-block .code-block-body pre input {
+    background: 0 0;
+    border: none;
+    color: transparent;
+    padding: 10px;
+    position: absolute;
+    right: -100vw;
+    width: 100%
+}
+
+.code-block .code-block-body pre input::-moz-selection {
+    background: 0 0
+}
+
+.code-block .code-block-body pre input::selection {
+    background: 0 0
+}
+
+.code-block .code-block-body pre code {
+    height: 290px
+}
+
+.code-block .code-block-body pre code::-webkit-scrollbar {
+    display: none
+}
+
+.code-block .code-block-body pre code:hover::-webkit-scrollbar {
+    background: rgba(0, 0, 0, .05);
+    display: block;
+    height: .25em;
+    width: .25em
+}
+
+.code-block .code-block-body pre code:hover::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, .05)
+}
+
+.code-block .code-block-body pre code:hover::-webkit-scrollbar-track {
+    box-shadow: none
+}
+
+.code-block .code-block-body pre code:hover::-webkit-scrollbar-thumb {
+    background: rgba(7, 20, 73, .2);
+    outline: 0
+}
+
+.code-block .code-block-tabs,
+.code-block .code-block-tabs ul {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch
+}
+
+.code-block .code-block-tabs ul {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-y: hidden;
+    position: relative;
+    top: -1px;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none
+}
+
+.code-block .code-block-tabs ul::-webkit-scrollbar {
+    display: none
+}
+
+.code-block .code-block-tabs ul li {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600
+}
+
+.code-block-inline {
+    background: #f9f2f4;
+    border-radius: 4px;
+    color: #9c1d3d;
+    padding: 3px 7px
+}
+
+.hljs {
+    background: 0 0 !important;
+    padding: 5px ​0 15px 0 !important
+}
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    background: #f0f0f0
+}
+
+.hljs,
+.hljs-subst {
+    color: #444
+}
+
+.hljs-comment {
+    color: #888
+}
+
+.hljs-attribute,
+.hljs-doctag,
+.hljs-keyword,
+.hljs-meta-keyword,
+.hljs-name,
+.hljs-selector-tag {
+    font-weight: 700
+}
+
+.hljs-deletion,
+.hljs-number,
+.hljs-quote,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-string,
+.hljs-template-tag,
+.hljs-type {
+    color: #800
+}
+
+.hljs-section,
+.hljs-title {
+    color: #800;
+    font-weight: 700
+}
+
+.hljs-link,
+.hljs-regexp,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-symbol,
+.hljs-template-variable,
+.hljs-variable {
+    color: #bc6060
+}
+
+.hljs-literal {
+    color: #78a960
+}
+
+.hljs-addition,
+.hljs-built_in,
+.hljs-bullet,
+.hljs-code {
+    color: #397300
+}
+
+.hljs-meta {
+    color: #1f7199
+}
+
+.hljs-meta-string {
+    color: #4d99bf
+}
+
+.hljs-emphasis {
+    font-style: italic
+}
+
+.hljs-strong {
+    font-weight: 700
+}
+
+
+.code-block-title[data-v-f97a4574] {
+    border-radius: 4px 4px 0 0
+}
+
+.code-block-tabs[data-v-f97a4574] {
+    background: #e6e8ed;
+    border-bottom: 1px solid #fefefe;
+    border-radius: 0 0 4px 4px;
+    padding-bottom: 0
+}
+
+.code-block-tabs ul[data-v-f97a4574] {
+    margin: 0;
+    padding: 0;
+}
+
+.code-block-tabs ul li[data-v-f97a4574] {
+    padding: 0
+}
+
+.code-block-tabs ul li>div[data-v-f97a4574] {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 400;
+    letter-spacing: .015em;
+    padding: 10px 0;
+    margin-right: 24px
+}
+
+.code-block-tabs ul li>div.is-active[data-v-f97a4574],
+.code-block-tabs ul li>div[data-v-f97a4574]:hover {
+    border-bottom: 3px solid #333;
+    font-weight: 600;
+    letter-spacing: 0
+}
+
+p {
+    font-weight: 400;
+    line-height: 1.7rem !important;
+}
+
+.head {
+    margin: 3rem 0 3rem 0 !important;
+    font-weight: 900 !important;
+    letter-spacing: normal !important;
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.sub-head {
+    font-weight: 800 !important;
+    margin: 0 0 2.5rem 0;
+}
+
+.sub-sub-head {
+    font-size: 1.375rem !important;
+    font-weight: 700 !important;
+    line-height: 1.95 !important;
+    margin-top: 2rem !important;
+}
+
+.btn {
+    color: white !important;
+    border-radius: 0.5rem !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    padding: 0.4rem 1.1rem !important;
+}
+
+.btn:hover {
+    background-color: #071449;
+}
+
+.img {
+    width: 80%;
+    height: auto;
+    border-radius: 1rem;
+    position: relative;
+    top: 0.8rem;
+}
+
+.wrapper {
+    background-color: #d4d6d6;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+    height: 30rem;
+}
+
+@media (min-width: 992px) {
+
+    .content .container {
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+
+    .content .heading,
+    .content .heading-alt,
+    .content .heading-sub {
+        font-size: 50px;
+        line-height: 0.86;
+        letter-spacing: normal;
+    }
+
+    .content p {
+        font-size: 16px;
+    }
+
+    .content ol li,
+    .content ul li {
+        font-size: 16px;
+    }
+
+    .content .heading-alt {
+        font-size: 30px;
+        line-height: 1.43;
+    }
+
+    .card-group {
+        margin: 0 0;
+    }
+
+    .card-group .card1 {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .wrapper{
+        height: 22rem;
+    }
+}
+@media (max-width: 1200px) {
+    .wrapper{
+        height: 20rem;
+    }
+}
+@media (max-width: 1100px) {
+    .wrapper{
+        height: 18rem;
+    }
+}
+@media (max-width: 960px) {
+    .wrapper{
+        height: 22rem;
+    }
+}
+@media (max-width: 770px) {
+    .wrapper{
+        height: 16rem;
+    }
+}
+@media (max-width: 550px) {
+    .wrapper{
+        height: 14rem;
+    }
+}
+@media (max-width: 400px) {
+    .wrapper{
+        height: 11rem;
+    }
+}

@@ -1,0 +1,91 @@
+<article class="how-do-i-connect-an-app container">
+    <section id="connect-an-app">
+        <h1 class="heading  head">Set up My App?</h1>
+        <p>After logging into your account's dashboard, select “Applications” and then “Create New”.</p>
+
+        <p>OTPless works with iOS and Android operating systems and all web browsers.</p>
+        <p>Before setting up your app, you need to determine which platforms you will be using. Then you can set up your
+            application on these platforms individually.</p>
+        <div class="zoom wrapper"><img src="../../../assets/img/application.PNG" class="img-fluid img"></div>
+
+        <!-- Android -->
+        <h2 id="android" class="heading-sub sub-sub-head">Android</h2>
+        <p>If you’d like to use the OTPless verification solution in your Android app, select the “Android” as
+            Application Type.</p>
+        <p>Enter your Application Name. This Name will be shown when a User receives the link on his or her whatsapp.
+        </p>
+        <p>After that You’ll need to enter a callback URI to redirect your users to the relevant
+            pages in your app and type in the Package Name you got from Google Play Store.</p>
+        <p>callback URI is necessary for your users to return to the app after they complete the verification process.
+            You can find more information on callback URI integration <a target="_blank"
+                href="/start-to-verify/android-sdk#deep-link">here</a>.</p>
+        <p>Enter your callback URI and Package Name, then click Save. The page will refresh automatically and your
+            Client Id, and Client Secret will be displayed on the screen.</p>
+        <p>For more information on how to use the Client Id, and the Client Secret, click <a target="_blank"
+                href="/start-to-verify/android-sdk">here</a>.</p>
+        <div class="zoom wrapper"><img src="../../../assets/img/android-application.PNG" class="img-fluid img"></div>
+
+        <!-- iOS -->
+        <h2 id="ios" class="heading-sub sub-sub-head">iOS</h2>
+        <p>If you’d like to use OTPless in your iOS app, select the “iOS” as Application Type.</p>
+        <p>Enter your Application Name. This Name will be shown when a User receives the link on his or her whatsapp.
+        </p>
+        <p>After that You’ll need to enter a callback URI to redirect your users to the relevant
+            pages in your app, and type in the App Store Bundle ID.</p>
+        <p>callback URI is necessary for your users to return to the app after they complete the verification
+            process.
+            You can find more information on callback URI integration <a target="_blank"
+                href="/start-to-verify/ios-sdk#deep-link">here</a>.</p>
+        <p>Enter your callback URI and Bundle ID, then click Save. The page will refresh automatically and your
+            Client Id, and Client Secret will be displayed on the screen.</p>
+        <p>For more information on how to use the Client Id, and the Client Secret, click <a target="_blank"
+                href="/start-to-verify/ios-sdk">here</a>.</p>
+        <div class="zoom wrapper"><img src="../../../assets/img/ios-application.PNG" class="img-fluid img"></div>
+
+        <!-- Web SDK -->
+        <h2 id="web-sdk" class="heading-sub sub-sub-head">Web SDK</h2>
+        <p>If you’d like to use the OTPless verification solution in your Web app, select the “Web Application” as
+            Application Type.</p>
+        <p>Enter your Application Name. This Name will be shown when a User receives the link on his or her whatsapp.
+        </p>
+        <p>After that You’ll need to enter a full callback URI to redirect your users to the relevant
+            pages in your website.</p>
+        <p>callback URI is necessary for your users to return to the website after they complete the verification
+            process.
+            You can find more information on callback URI integration <a target="_blank"
+                href="/start-to-verify/web-sdk">here</a>.</p>
+
+        <p>For more details on integration, click <a target="_blank" href="/start-to-verify/web-sdk">here</a>.</p>
+        <div class="zoom wrapper"><img src="../../../assets/img/web-application.PNG" class="img-fluid img"></div>
+
+        <!-- Rest API -->
+        <h2 id="rest-api" class="heading-sub sub-sub-head">Rest API</h2>
+        <p>The Rest API platform will automatically be defined for all your apps. You can also integrate OTPless using
+            Rest API. For more details on how to integrate it into your app using the server-key parameter, click <a
+                target="_blank" href="/start-to-verify/rest-api">here</a>.</p>
+    </section>
+    <section id="need-to-know">
+        <h1 class="heading-alt sub-head">Need to Know</h1>
+        <h2 id="what-are-deep-links" class="heading-sub sub-sub-head">What Are callback URI?</h2>
+        <p>callback URI allow users who complete the verification process with WhatsApp to return to your
+            application. It’s crucial that your callback URI settings are done properly in order to ensure a successful
+            verification process. Callback URI
+            can be either an https URL or a custom URI scheme for your android/iOS App.</p>
+        <h2 id="what-is-a-server-key-a-client-key-and-a-client-secret" class="heading-sub sub-sub-head">What Is a
+            Client Id and a Client Secret?</h2>
+        <p>The Client Id and Client Secret parameters are used in all REST API requests that are sent to OTPless:</p>
+
+        <p>You’ll need to send this parameter to OTPless as a header parameter.</p>
+        <div class="alert warning">
+            <em>
+                <div class="alert-title">IMPORTANT:</div>
+                <p><em>The End-user should never have access to the Client Id and Client Secret parameters. Never
+                        hardcode this parameter
+                        into the
+                        codebase of you iOS and Android app and do not share it with anyone. If you lose this parameter,
+                        retrieve it from your app details page in the panel or contact us as soon as possible at <a
+                            href="mailto:support@otpless.com">support@otpless.com</a></em></p>
+            </em>
+        </div>
+    </section>
+</article>

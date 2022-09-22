@@ -1,0 +1,282 @@
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #ededed;
+  height: 60px;
+  position: relative;
+  padding: 0;
+  z-index: 20;
+}
+
+
+.header .container {
+  padding: 0;
+}
+
+.navbar1 {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+
+.navbar1 .navbar-brand {
+  padding: 0 23px 0 0;
+  border-right: 1px solid #d8d8d8;
+}
+
+.navbar1 .navbar-brand img {
+  height: 2rem;
+  width: 7rem;
+  margin-top: 2px;
+}
+
+.navbar1 .nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+}
+
+.navbar1 .nav .nav-link {
+  color: #363636;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: normal;
+  margin: 0 15px;
+}
+
+.navbar1 .nav .nav-link.home {
+  margin: 0 auto 0 10px;
+}
+
+.navbar1 .nav .nav-link.register {
+  display: none;
+}
+
+.navbar1 .nav .nav-link.inverted {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 35px;
+  background-color: #615ef6;
+  height: 100%;
+  color: #fff;
+  font-size: 18px;
+}
+
+.navbar1 .nav .nav-link.inverted:hover {
+  background-color: #071449;
+}
+
+.login {
+  margin: 0 2rem;
+  padding-top: 8px;
+}
+
+.menu-toggler {
+  cursor: pointer;
+  padding: 0px 50px 0px 35px;
+}
+
+.sidebar {
+  background-color: #f5f6fa;
+  height: 100vh;
+  width: 342px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  top: 0;
+  z-index: 21;
+  transform: translate(-100%);
+  transition: transform 0.25s ease;
+}
+
+.sidebar.open {
+  transform: translate(0);
+}
+
+.sidebar .pages-tree {
+  font-size: 16px;
+  padding: 32px 30px;
+}
+
+.sidebar .pages-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .pages-tree ul>li {
+  font-weight: 700;
+  padding: 14px 0;
+}
+
+.sidebar .pages-tree ul>li .active,
+.sidebar .pages-tree ul>li .nuxt-link-active {
+  color: #3f51b5;
+}
+
+.sidebar .pages-tree ul>li>ul {
+  margin-top: 15px;
+  padding-left: 11px;
+}
+
+.sidebar .pages-tree ul>li>ul>li {
+  font-weight: 400;
+}
+
+.sidebar .pages-tree ul>li>ul>li>ul {
+  display: none;
+}
+
+.sidebar .pages-tree ul>li>ul>li>a.nuxt-link-active+ul {
+  display: block;
+}
+
+.sidebar .pages-tree .item a {
+  color: #071449;
+  display: block;
+}
+
+.sidebar .pages-tree .item.last-sub-item {
+  padding: 0;
+}
+
+.sidebar .pages-tree .item.last-sub-item a {
+  padding: 10px 18px;
+  border-left: 2px solid #e6e8ed;
+}
+
+.sidebar .pages-tree .item.last-sub-item a.nuxt-link-active {
+  color: #3f51b5;
+  border-color: #3f51b5;
+}
+
+.sidebar .pages-tree .item.current a {
+  color: #3f51b5;
+}
+
+.sidebar .sidebar-with-scrollbar {
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sidebar .sidebar-with-scrollbar::-webkit-scrollbar {
+  width: 0.25em;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.sidebar .sidebar-with-scrollbar::-webkit-scrollbar-track {
+  box-shadow: none;
+}
+
+.sidebar .sidebar-with-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(7, 20, 73, 0.2);
+  outline: 0;
+}
+
+.sidebar .sidebar-header {
+  background: #fff;
+  border-bottom: 1px solid #ededed;
+  height: 60px;
+}
+
+.sidebar .sidebar-close {
+  cursor: pointer;
+  display: inline-block;
+  padding: 20px 30px;
+}
+
+.sidebar .sidebar-buttons {
+  padding: 32px 30px 0;
+  margin-bottom: -15px;
+  margin-top: 40px;
+}
+
+.sidebar .sidebar-buttons .sidebar-button {
+  background-color: transparent;
+  border: 1px solid #071449;
+  color: #363636;
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.53;
+  letter-spacing: normal;
+  margin-bottom: 15px;
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-logo-img {
+  height: 1.5rem;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: 0.5rem;
+}
+
+.login {
+  margin: 0 2rem;
+  padding-top: 8px;
+}
+
+.active-nav-tab {
+  color: #3f51b5 !important;
+}
+
+.active-nav-sub-tab {
+  border-color: #3f51b5 !important;
+  color: #3f51b5 !important;
+}
+
+.vk-sub-menu {
+  display: block !important;
+}
+
+@media (min-width: 992px) {
+  .header {
+    height: 64px;
+  }
+
+  .navbar1 .navbar-brand {
+    padding: 0 23px 0 42px;
+    margin-right: 0px;
+  }
+
+  .sidebar {
+    float: left;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: translate(0);
+  }
+
+  .sidebar .pages-tree {
+    padding: 32px 45px 60px;
+  }
+}
+
+@media (max-width: 992px) {
+
+.login-logo-img{
+  margin-left: 3rem;
+}
+.mat-list-base{
+  padding-top: 4rem;
+}
+
+  .menu-toggler {
+    border: none;
+    background: none;
+  }
+}
+
+.nav-link{
+  flex-wrap: nowrap;
+}

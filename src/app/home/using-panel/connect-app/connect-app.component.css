@@ -1,0 +1,10 @@
+.warning{
+    border: 0.02rem solid;
+    border-color: black;
+    margin: 2rem 0;
+    padding: 1rem 2rem 0 2rem;
+}
+.alert-title{
+    font-weight: 700;
+    text-align: left;
+}

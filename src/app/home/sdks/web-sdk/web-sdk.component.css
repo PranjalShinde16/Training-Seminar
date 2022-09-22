@@ -1,0 +1,10 @@
+.bgimg {
+  background-image: url('src/assets/img/coming-soon.jpg');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}

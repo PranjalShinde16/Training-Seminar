@@ -1,0 +1,152 @@
+<article class="android-sdk container">
+    <section id="android-sdk">
+        <h1 class="heading  head">Android SDK</h1>
+    </section>
+    <section id="how-it-works">
+        <h1 class="heading-alt mt-1 sub-head">
+            How it works
+        </h1>
+        <ul class="text">
+            <li class="text">
+                Login to your OTPless dashboard. <a target="_blank" href="https://dashboard.otpless.com/login">Login</a>
+            </li>
+            <li class="text">
+                Create New app adding following details
+                <br>
+                * Select Application type Android<br>
+                * Enter App name<br>
+                * Enter Redirect URI. <b>URI must be in Lowercase</b> (eg. “sample://otpless”)<br>
+                * Enter package name (eg. com.sample.app )
+            </li>
+            <li class="text">
+                Setup your server side with Rest api as mension <a target="_blank"
+                    href="/start-to-verify/rest-api">here</a> , It will include initiating auth and getting user
+                details using client id and client secret (Note : Please keep your id and secret safe)
+            </li>
+        </ul>
+    </section>
+
+    <!--Installation-->
+    <section id="installation">
+        <h1 class="heading-alt mt-1 sub-head">
+            Installation
+        </h1>
+        <h1 class="sub-sub-head">Requirements</h1>
+        <p>Minimum SDK Version is api 17</p>
+        <button class="installation">
+            <a href="../../../../assets/img/OTPless-Android-SDK.aar" download="OTPless-Android-SDK.aar"
+                class="instbtn">Installation</a>
+        </button>
+        <p>Add OTPless aar file in your android project</p>
+    </section>
+
+    <!--Usage-->
+    <section id="usage">
+        <h1 class="heading-alt mt-1 sub-head">
+            Usage
+        </h1>
+
+        <!--Division 1-->
+        <div class="row">
+
+            <!-- <h1 class="sub-sub-head">Usage</h1> -->
+            <div class="col-md-6 text">
+                <p>In your Activity file import the following.</p>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">Import Code</h1>
+                    <mat-icon class="copytoclip" cdkCopyToClipboard="{{info}}">content_copy</mat-icon>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <pre>
+                                <code class="hljs">
+import com.otpless.main.Otpless;
+import com.otpless.main.OtplessIntentRequest;
+import com.otpless.main.OtplessProvider;
+import com.otpless.main.OtplessTokenData;
+                                </code>
+                  <input type="text">
+                </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Division 2-->
+        <div class="row">
+            <div class="col-md-6 text">
+                <p>
+                    After getting the intentUri via initiate auth from your backend api that connects to otpless
+                    service.</p>
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">onCreate , onOtplessResult</h1>
+                    <!-- <div data-v-f97a4574="" class="code-block-tabs">
+                        <div data-v-f97a4574="" class="nav-item">
+                            User Details
+                        </div>
+                    </div> -->
+                    <mat-icon class="copytoclip" cdkCopyToClipboard="{{info1}}">content_copy</mat-icon>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <pre>
+                                <code class="hljs">
+// declare otpless variable
+private Otpless otpless;
+                                     
+@Override
+protected void onCreate(Bundle savedInstanceState) {{ '{' }}
+    super.onCreate(savedInstanceState);
+    //Initialize OTPLess Instance
+    otpless = OtplessProvider.getInstance(this).init(this::onOtplessResult);
+{{ '}' }}
+                                     
+//Call back function Where token is received
+    private void onOtplessResult(@Nullable OtplessTokenData response) {{ '{' }}
+    if (response == null) return;
+    //Send this token to your backend end api to fetch user details from otpless service
+    String token = response.getToken();
+{{ '}' }}
+                                </code>
+                  <input type="text">
+                </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Division 3-->
+        <div class="row">
+            <div class="col-md-6 text">
+            </div>
+            <div class="col-md-6">
+                <div data-v-f97a4574="" class="code-block">
+                    <h1 data-v-f97a4574="" class="code-block-title text text1">initiateOtplessFlow</h1>
+                    <!-- <div data-v-f97a4574="" class="code-block-tabs">
+                        <div data-v-f97a4574="" class="nav-item">
+                            custom text and color
+                        </div>
+                    </div> -->
+                    <mat-icon class="copytoclip" cdkCopyToClipboard="{{info3}}">content_copy</mat-icon>
+                    <div data-v-f97a4574="" class="code-block-body">
+                        <pre>
+                                <code class="hljs">
+private void initiateOtplessFlow() {{ '{' }}
+ 
+    //While you create a request with otpless sdk you can define your own loading text and color
+                                         
+    final OtplessIntentRequest request = new OtplessIntentRequest(intentUri)
+    .setLoadingText("Please wait...")
+    .setProgressBarColor(R.color.purple_200);
+    otpless.openOtpless(request);
+{{ '}' }}
+                                </code>
+                  <input type="text">
+                </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</article>
